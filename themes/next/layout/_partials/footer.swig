@@ -10,13 +10,14 @@
 
 {% if theme.copyright %}
 <div class="powered-by">
-  {{ __('footer.powered', '<a class="theme-link" href="https://hexo.io">Hexo</a>') }}
+  {{ __('footer.powered', '<a class="theme-link" target="_blank" href="https://www.github.com/cccy0">CCCY</a>') }}
 </div>
 
 <div class="theme-info">
-  {{ __('footer.theme') }} -
+  {{ __('footer.theme') }} 
+  <!-- -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.{{ theme.scheme }}
-  </a>
+  </a>  -->
 </div>
 {% endif %}

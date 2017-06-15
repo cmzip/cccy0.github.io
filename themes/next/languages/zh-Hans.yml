@@ -1,5 +1,5 @@
 title:
-  archive: 归档
+  archive: 时间轴
   category: 分类
   tag: 标签
   schedule: 日程表
@@ -46,7 +46,7 @@ page:
 
 footer:
   powered: "由 %s 强力驱动"
-  theme: Style引擎
+  theme: Style引擎-个人博客
 
 counter:
   tag_cloud:

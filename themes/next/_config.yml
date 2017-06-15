@@ -137,6 +137,8 @@ font:
 # Value is the target link (E.g. GitHub: https://github.com/iissnan)
 social:
   GitHub: https://github.com/CCCY0
+  Coding: https://coding.net/u/cccy0
+  Email CCCY0@Foxmail.com:
 
 
 
@@ -202,12 +204,14 @@ sidebar:
 
 #友链
 # Blog rolls
-links_title: Links
+links_title: Friendly Link
 #links_layout: block
 #links_layout: inline
 links:
-BigXu: http://www.dogxu.cn/
+  BigXu: http://www.dogxu.cn/
   #Title: http://example.com/
+
+
 
 
 # ---------------------------------------------------------------
@@ -395,7 +399,7 @@ vkontakte_api:
 # Show number of visitors to each article.
 # You can visit https://leancloud.cn get AppID and AppKey.
 leancloud_visitors:
-  enable: false
+  enable: true
   app_id: mP2OllM6886pJFKeg4fcvCo2-gzGzoHsz
   app_key: iMoR1JTY5HbKEQOGuIFWe2k6
 
@@ -477,7 +481,7 @@ use_motion: true
 # Fancybox
 fancybox: true
 
-# Canvas-nest
+# Canvas-nest背景动画蜘蛛网
 canvas_nest: false
 
 # Script Vendors.
