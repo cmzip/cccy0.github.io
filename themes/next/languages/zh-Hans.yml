@@ -7,12 +7,12 @@ title:
 author: 博主
 
 menu:
-  home: 首页
-  archives: 归档
-  categories: 分类
+  home: 第一页
+  archives: 时间轴
+  categories: o类O
   tags: 标签
-  about: 关于
-  search: 搜索
+  about: CCCY
+  search: Google一下
   schedule: 日程表
   sitemap: 站点地图
   commonweal: 公益404
@@ -46,7 +46,7 @@ page:
 
 footer:
   powered: "由 %s 强力驱动"
-  theme: 主题
+  theme: Style引擎
 
 counter:
   tag_cloud:
@@ -74,14 +74,14 @@ search:
   placeholder: 搜索...
 
 cheers:
-  um: 嗯..
-  ok: OK
-  nice: 好
-  good: 很好
-  great: 非常好
-  excellent: 太棒了
+  um: 忆..
+  ok: 枫叶
+  nice: 春秋
+  good: 夏..
+  great: 风..
+  excellent: 雪..
 
-keep_on: 继续努力。
+keep_on: My Life.
 
 symbol:
   comma: '， '

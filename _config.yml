@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle:
-description:
-author: John Doe
-language:
+title: CCCY Life Style
+subtitle: 个人博客
+description: This is my Blog,Im writing something here.
+author: CCCY
+language: zh-Hans
 timezone:
 
 # URL
