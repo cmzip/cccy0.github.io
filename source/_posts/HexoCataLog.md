@@ -3,7 +3,7 @@ title: HEXO的文件目录
 categories: Hexo
 ---
 
-我的Blog大致已经建的差不多了,在这里先把Hexo的目录整理一下.还有一些东西以后再写.
+*我的Blog大致已经建的差不多了,在这里先把Hexo的目录整理一下.还有一些东西以后再写.*
 # Hexo备份目录:
 
 ### scaffolds
