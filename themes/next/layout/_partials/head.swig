@@ -107,6 +107,26 @@
   };
 </script>
 
+<script type="text/javascript">
+
+function addLink() {
+    var selection = window.getSelection();
+    pagelink = ". 原文出自CCCY,转载请保留原文链接: " + document.location.href;
+    copytext = pagelink + selection;
+    newdiv = document.createElement('div');
+    newdiv.style.position = 'absolute';
+    newdiv.style.left = '-99999px';
+    document.body.appendChild(newdiv);
+    newdiv.innerHTML = copytext;
+    selection.selectAllChildren(newdiv);
+    window.setTimeout(function () {
+        document.body.removeChild(newdiv);
+    }, 100);
+}
+document.oncopy = addLink;
+
+</script>
+
 {# Canonical, good for google search engine (SEO) : https://support.google.com/webmasters/answer/139066 #}
 {% if theme.canonical %}
   <link rel="canonical" href="{{ config.url }}/{{ page.canonical_path.replace('index.html', '') }}"/>
